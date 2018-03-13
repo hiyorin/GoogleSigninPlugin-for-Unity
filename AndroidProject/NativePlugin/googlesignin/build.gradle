@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    testCompile 'junit:junit:4.12'
+}
+
+dependencies {
+    compile 'com.google.android.gms:play-services-auth:10.2.0'
+    compile 'com.google.android.gms:play-services-auth-base:10.2.0'
+}
+
+android.libraryVariants.all { variant ->
+    variant.outputs.each { output ->
+        output.packageLibrary.exclude('libs/classes.jar')
+    }
+}
+
+task exportAar(type: Copy) {
+    from('build/outputs/aar/')
+    into('../../../Assets/NativePlugins/GoogleSignIn/Plugins/Android/')
+    include('googlesignin-release.aar')
+    include('play-services-auth-10.2.0.aar')
+    include('play-services-auth-base-10.2.0.aar')
+    rename('googlesignin-release.aar', 'googlesignin-lib.aar')
+}
+
+task copyLibs(type: Copy) {
+    from configurations.compile
+    into 'build/outputs/aar'
+    exclude { details -> details.file.name.endsWith("*.jar") }
+    include "play-services-auth-10.2.0.aar"
+    include "play-services-auth-base-10.2.0.aar"
+}
