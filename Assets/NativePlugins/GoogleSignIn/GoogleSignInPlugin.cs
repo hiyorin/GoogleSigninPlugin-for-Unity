@@ -189,7 +189,7 @@ public class GoogleSignInPlugin : SingletonMonoBehaviour<GoogleSignInPlugin>
 
     /// <summary>
     /// Received UnitySendMessage
-    /// SignInが成功したときに呼ばれます
+    /// Called when Sign-in successed
     /// </summary>
     private void OnSignInSuccessed()
     {
@@ -199,7 +199,7 @@ public class GoogleSignInPlugin : SingletonMonoBehaviour<GoogleSignInPlugin>
 
     /// <summary>
     /// Received UnitySendMessage
-    /// SignInが失敗したときに呼ばれます
+    /// Called when Sign-in failed
     /// </summary>
     /// <param name="message"></param>
     private void OnSignInFailed(string message)
@@ -210,7 +210,7 @@ public class GoogleSignInPlugin : SingletonMonoBehaviour<GoogleSignInPlugin>
 
     /// <summary>
     /// Received UnitySendMessage
-    /// SignInがユーザーによりに呼ばれます	
+    /// Called when Sign-in user cancel
     /// </summary>
     private void OnSignInUserCancel()
     {
