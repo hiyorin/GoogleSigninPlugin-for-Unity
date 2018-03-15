@@ -1,6 +1,9 @@
 # GoogleSigninPlugin
 A set of tools for Unity to allow handling Google Sign-in for Android and iOS.
 
+# Install
+GoogleSigninPlugin.unitypackage
+
 # Settings
 #### Create settings file
 * Menu/Settings/Google
