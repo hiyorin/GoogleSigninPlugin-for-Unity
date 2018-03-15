@@ -122,6 +122,28 @@ public class GoogleSignInPlugin : SingletonMonoBehaviour<GoogleSignInPlugin>
     /// <summary>
     /// Sign-in
     /// </summary>
+    /// <param name="requestEmail"></param>
+    /// <param name="requestId"></param>
+    /// <param name="requestIdToken"></param>
+    /// <param name="requestServerAuthCode"></param>
+    /// <param name="requestProfile"></param>
+    /// <returns>CoroutineEnumerator</returns>
+    public IEnumerator SignIn(bool requestEmail, bool requestId, bool requestIdToken, bool requestServerAuthCode, bool requestProfile)
+    {
+        GoogleSettings settings = null;
+        yield return SettingsUtility.LoadAsync<GoogleSettings>(x => settings = x);
+        if (settings == null)
+        {
+            Error = "NotFound GoogleSettings";
+            yield break;
+        }
+        
+        yield return SignIn(settings.Target.ClientId, settings.Target.ClientSecret, requestEmail, requestId, requestIdToken, requestServerAuthCode, requestProfile);
+    }
+    
+    /// <summary>
+    /// Sign-in
+    /// </summary>
     /// <param name="clientId"></param>
     /// <param name="clientSecret"></param>
     /// <param name="requestEmail"></param>
