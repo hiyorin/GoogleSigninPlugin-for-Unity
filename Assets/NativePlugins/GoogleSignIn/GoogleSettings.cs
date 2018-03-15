@@ -5,7 +5,7 @@ using UnityEditor;
 #endif
 
 /// <summary>
-/// Googleに関する設定
+/// Google settings.
 /// </summary>
 public class GoogleSettings : ScriptableObject
 {
@@ -27,16 +27,16 @@ public class GoogleSettings : ScriptableObject
     }
 
 #pragma warning disable 414
-    [SerializeField, Tooltip("Androidの設定")]
+    [SerializeField]
     private Platform _android = null;
-    [SerializeField, Tooltip("iOSの設定")]
+    [SerializeField]
     private Platform _ios = null;
-    [SerializeField, Tooltip("Editorの設定")]
+    [SerializeField]
     private Platform _editor = null;
 #pragma warning restore 414
 
     /// <summary>
-    /// プラットフォーム設定
+    /// Platform settings.
     /// </summary>
     public Platform Target
     {
@@ -49,7 +49,7 @@ public class GoogleSettings : ScriptableObject
 #elif UNITY_IOS
             return _ios;
 #else
-            Debug.LogErrorFormat("このプラットフォームは未対応です");
+            Debug.LogErrorFormat("This platform is not supported.");
             return null;
 #endif
         }

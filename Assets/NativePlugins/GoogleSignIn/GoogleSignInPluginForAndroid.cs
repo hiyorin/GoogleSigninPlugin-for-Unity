@@ -1,9 +1,6 @@
 ﻿#if UNITY_ANDROID
 using UnityEngine;
 
-/// <summary>
-/// Androidの Google Sign-In 関連プラグイン
-/// </summary>
 public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
 {
     private const string ClassName = "com.hiyorin.googlesignin.GoogleSignInPlugin";
@@ -25,7 +22,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// EMail（リクエストすると取得できる）
+    /// EMail.
     /// </summary>
     public override string Email
     {
@@ -39,7 +36,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// ID（リクエストすると取得できる）
+    /// ID.
     /// </summary>
     public override string Id
     {
@@ -53,7 +50,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// ID Token（リクエストすると取得できる）
+    /// ID Token.
     /// </summary>
     public override string IdToken
     {
@@ -67,7 +64,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// Server Auth Code（リクエストすると取得できる）
+    /// Server Auth Code.
     /// </summary>
     public override string ServerAuthCode
     {
@@ -81,7 +78,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// Display Name（リクエストすると取得できる）
+    /// Display Name.
     /// </summary>
     public override string DisplayName
     {
@@ -95,7 +92,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// サインイン
+    /// Sign-in
     /// </summary>
     /// <param name="clientId"></param>
     /// <param name="clientSecret"></param>
@@ -114,7 +111,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// サインアウト
+    /// Sign-out
     /// </summary>
     public override void SignOut()
     {
@@ -125,7 +122,7 @@ public class GoogleSignInPluginForAndroid : GoogleSignInPlugin.Interface
     }
 
 	/// <summary>
-	/// デバッグモードの設定
+    /// Debug mode setting.
 	/// </summary>
 	/// <param name="isEnable"></param>
 	public override void SetDebugMode(bool isEnable)

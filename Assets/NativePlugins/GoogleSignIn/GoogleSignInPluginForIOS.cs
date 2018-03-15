@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 /// <summary>
-/// IOS用の Google Sign-In 関連のプラグイン
+/// Google Sign-In plugin for iOS
 /// </summary>
 public class GoogleSignInPluginForIOS : GoogleSignInPlugin.Interface
 {
@@ -24,32 +24,32 @@ public class GoogleSignInPluginForIOS : GoogleSignInPlugin.Interface
     private static extern void _SetDebugMode_GoogleSignIn(bool isEnable);
 
     /// <summary>
-    /// EMail（リクエストすると取得できる）
+    /// EMail.
     /// </summary>
     public override string Email { get { return _GetEmail_GoogleSignIn(); } }
 
     /// <summary>
-    /// ID（リクエストすると取得できる）
+    /// ID.
     /// </summary>
     public override string Id { get { return _GetId_GoogleSignIn(); } }
 
     /// <summary>
-    /// ID Token（リクエストすると取得できる）
+    /// ID Token.
     /// </summary>
     public override string IdToken { get { return _GetIdToken_GoogleSignIn(); } }
 
     /// <summary>
-    /// Server Auth Code（リクエストすると取得できる）
+    /// Server Auth Code.
     /// </summary>
     public override string ServerAuthCode { get { return _GetServerAuthCode_GoogleSignIn(); } }
 
     /// <summary>
-    /// Display Name（リクエストすると取得できる）
+    /// Display Name.
     /// </summary>
     public override string DisplayName { get { return _GetDisplayName_GoogleSignIn(); } }
 
     /// <summary>
-    /// サインイン
+    /// Sign-in
     /// </summary>
     /// <param name="clientId"></param>
     /// <param name="clientSecret"></param>
@@ -64,7 +64,7 @@ public class GoogleSignInPluginForIOS : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// サインアウト
+    /// Sign-out
     /// </summary>
     public override void SignOut()
     {
@@ -72,7 +72,7 @@ public class GoogleSignInPluginForIOS : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// デバッグモードの設定
+    /// Debug mode setting.
     /// </summary>
     /// <param name="isEnable"></param>
     public override void SetDebugMode(bool isEnable)

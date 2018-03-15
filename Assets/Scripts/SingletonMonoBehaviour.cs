@@ -64,7 +64,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T:Singleto
     }
     
     /// <summary>
-    /// 一度だけ初期化処理をする
+    /// Initialize only once.
     /// </summary>
     private void SingletonInitialize()
     {
@@ -76,7 +76,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T:Singleto
     }
 
     /// <summary>
-    /// 初期化のときに呼ばれます
+    /// Called at initialization
     /// </summary>
     protected virtual void OnInitialize()
     {
@@ -84,7 +84,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T:Singleto
     }
     
     /// <summary>
-    /// 破棄されるときに呼ばれます
+    /// Called at destroy
     /// </summary>
     protected virtual void OnFinalize()
     {

@@ -7,43 +7,43 @@ using System.Collections.Generic;
 using MiniJSON;
 
 /// <summary>
-/// Editor用の Google Sign-In 関連プラグイン
+/// Google Sign-In plugin for UnityEditor
 /// </summary>
 public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
 {
-    /// OAuth2のURL
-    private static string AuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
-    /// OAuth2のtoken取得URL
-    private static string AuthTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
-    /// OAuth2のprofile
-    private static string AuthProfileUrl = "https://www.googleapis.com/oauth2/v1/userinfo";
-    /// OAuth2のspope
-    private static string AuthScope = WWW.EscapeURL("openid email profile");
-    /// OAuthのredirect_uri（デスクトップ用の固定値）
-    private static string AuthRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
+    /// OAuth2 URL.
+    private const string AuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+    /// OAuth2 get token URL.
+    private const string AuthTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
+    /// OAuth2 profile.
+    private const string AuthProfileUrl = "https://www.googleapis.com/oauth2/v1/userinfo";
+    /// OAuth2 scope.
+    private const string AuthScope = "openid email profile";
+    /// OAuth redirect_uri for Desktop fixed value.
+    private const string AuthRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
 
     /// <summary>
-    /// EMail（リクエストすると取得できる）
+    /// EMail.
     /// </summary>
-    public override string Email { get { return ""; } }
+    public override string Email { get { return string.Empty; } }
 
     /// <summary>
-    /// ID（リクエストすると取得できる）
+    /// ID.
     /// </summary>
-    public override string Id { get { return ""; } }
+    public override string Id { get { return string.Empty; } }
 
     /// <summary>
-    /// ID Token（リクエストすると取得できる）
+    /// ID Token.
     /// </summary>
     public override string IdToken { get { return _idToken; } }
 
     /// <summary>
-    /// Server Auth Code（リクエストすると取得できる）
+    /// Server Auth Code.
     /// </summary>
-    public override string ServerAuthCode { get { return ""; } }
+    public override string ServerAuthCode { get { return string.Empty; } }
 
     /// <summary>
-    /// Display Name（リクエストすると取得できる）
+    /// Display Name.
     /// </summary>
     public override string DisplayName { get { return _displayName; } }
 
@@ -145,7 +145,7 @@ public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// サインイン
+    /// Sign-in
     /// </summary>
     /// <param name="clientId"></param>
     /// <param name="clientSecret"></param>
@@ -159,7 +159,7 @@ public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
         string url = string.Format("{0}?response_type=code&client_id={1}&scope={2}&redirect_uri={3}&access_type=offline",
             AuthUrl,
             clientId,
-            AuthScope,
+            WWW.EscapeURL(AuthScope),
             AuthRedirectUri);
         Application.OpenURL(url);
         _clientId = clientId;
@@ -168,12 +168,12 @@ public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
     }
 
     /// <summary>
-    /// サインアウト
+    /// Sign-out
     /// </summary>
     public override void SignOut() { }
 
 	/// <summary>
-	/// デバッグモードの設定
+    /// Debug mode setting.
 	/// </summary>
 	/// <param name="isEnable"></param>
 	public override void SetDebugMode(bool isEnable)

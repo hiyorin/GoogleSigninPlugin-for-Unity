@@ -6,12 +6,12 @@ using UnityEditor;
 #endif
 
 /// <summary>
-/// ScriptableObject設定
+/// ScriptableObject setting
 /// </summary>
 public static class SettingsUtility
 {
 	/// <summary>
-	/// ロード
+	/// Load ScriptableObject
 	/// </summary>
 	public static T Load<T>() where T:ScriptableObject
 	{
@@ -19,7 +19,7 @@ public static class SettingsUtility
 	}
 
 	/// <summary>
-	/// 非同期ロード
+	/// Aync load ScriptableObject
 	/// </summary>
 	public static IEnumerator LoadAsync<T>(Action<T> onResult) where T:ScriptableObject
 	{
