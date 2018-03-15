@@ -4,13 +4,23 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using MiniJSON;
 
 /// <summary>
 /// Google Sign-In plugin for UnityEditor
 /// </summary>
 public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
 {
+    private class TokenResponse
+    {
+        public string id_token = string.Empty;
+        public string access_token = string.Empty;
+    }
+
+    private class ProfileResponse
+    {
+        public string name = string.Empty;
+    }
+
     /// OAuth2 URL.
     private const string AuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
     /// OAuth2 get token URL.
@@ -83,10 +93,9 @@ public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
                 SendMessage("OnSignInFailed", request.error);
                 yield break;
             }
-
-            Dictionary<string, object> jsonDic = Json.Deserialize(request.downloadHandler.text) as Dictionary<string, object>;
-            _idToken = jsonDic["id_token"] as string;
-            accessToken = jsonDic["access_token"] as string;
+            var response = JsonUtility.FromJson<TokenResponse>(request.downloadHandler.text);
+            _idToken = response.id_token;
+            accessToken = response.access_token;
         }
         
         // get profile
@@ -101,8 +110,8 @@ public class GoogleSignInPluginForEditor : GoogleSignInPlugin.Interface
                 yield break;
             }
             Debug.Log(request.downloadHandler.text);
-            Dictionary<string, object> jsonDic = Json.Deserialize(request.downloadHandler.text) as Dictionary<string, object>;
-            _displayName = jsonDic["name"] as string;
+            var response = JsonUtility.FromJson<ProfileResponse>(request.downloadHandler.text);
+            _displayName = response.name;
         }
 
         SendMessage("OnSignInSuccessed");
