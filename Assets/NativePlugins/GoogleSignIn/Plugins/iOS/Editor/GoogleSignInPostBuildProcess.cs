@@ -70,8 +70,11 @@ public class GoogleSignInPostProcessBuild
         // set bundle id
         PlistElementDict bundleIdDict = bundleUrlTypes.AsArray().AddDict();
         bundleIdDict.SetString("CFBundleTypeRole", "Editor");
-		bundleIdDict.CreateArray("CFBundleURLSchemes").AddString(Application.bundleIdentifier);
-
+#if UNITY_5_6_OR_NEWER
+        bundleIdDict.CreateArray("CFBundleURLSchemes").AddString(Application.identifier);
+#else
+        bundleIdDict.CreateArray("CFBundleURLSchemes").AddString(Application.bundleIdentifier);
+#endif
 		plist.WriteToFile(filePath);
 #endif
     }

@@ -1,4 +1,5 @@
 ﻿#if UNITY_IOS
+using UnityEngine;
 using System.Runtime.InteropServices;
 
 /// <summary>
