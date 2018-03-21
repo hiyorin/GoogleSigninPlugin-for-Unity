@@ -18,6 +18,10 @@ GoogleSigninPlugin.unitypackage
 * Setting ClientId and ClientSecret to GoogleSettings.asset
 
 # Usage
+```cs
+using GoogleSignIn;
+```
+
 #### Example: Sign-in
 Call the "SignIn" method and check the items you want to get.
 ```cs
