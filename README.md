@@ -46,7 +46,16 @@ public void Example()
 }
 ```
 
-# When using your own UnityPlayerActivity
+# AndroidManifest.xml
+Replace main Activity.
+```xml
+<!--
+<activity android:name="com.unity3d.player.UnityPlayerActivity" ...
+-->
+<activity android:name="com.hiyorin.googlesignin.CustomUnityPlayerActivity" ...
+```
+
+# When using your own main Activity
 Please pass the value of OnActivityResult of your Activity
 ```cs
 public void Exapmle(int requestCode, int resultCode, AndroidJavaObject data)
