@@ -7,7 +7,7 @@ namespace GoogleSignIn
     {
         private const string ClassName = "com.hiyorin.googlesignin.GoogleSignInPlugin";
         
-        private void Start()
+        private void Awake()
         {
             using (AndroidJavaClass plugin = new AndroidJavaClass(ClassName))
             {
